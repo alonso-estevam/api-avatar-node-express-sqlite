@@ -1,6 +1,10 @@
-const express = require('express');
+import {openDb} from './configDB.js'
+
+import express from 'express';
 const app = express();
 app.use(express.json());
+
+openDb();
 
 const PORT = process.env.PORT || 3000;
 
