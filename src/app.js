@@ -1,12 +1,14 @@
-import {openDb} from './configDB.js'
+// import { openDb } from './configDB.js';
+import { createTable } from './controller/character-controller.js';
 
 import express from 'express';
 const app = express();
+const PORT = process.env.PORT || 3000;
+
 app.use(express.json());
 
-openDb();
-
-const PORT = process.env.PORT || 3000;
+// openDb() was removed
+createTable();
 
 app.get('/', (req, res) => {
     res.send("Hello world!")
