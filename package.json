@@ -1,0 +1,11 @@
+{
+  "name": "api-avatar",
+  "version": "1.0.0",
+  "description": "Miniprojeto para exercitar a criação de API com Node, express e sqlite",
+  "main": "src/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alonso Estevam",
+  "license": "ISC"
+}
