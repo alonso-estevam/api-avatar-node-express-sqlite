@@ -1,5 +1,5 @@
 // import { openDb } from './configDB.js';
-import { createTable, insertCharacter, updateCharacter, selectAllCharacters, selectCharacter } from './controller/character-controller.js';
+import { createTable, insertCharacter, updateCharacter, selectAllCharacters, selectCharacter, deleteCharacter } from './controller/character-controller.js';
 
 import express from 'express';
 const app = express();
@@ -43,6 +43,11 @@ app.put('/characters', (req, res) => {
             "message": "Character successfully updated!"
         })
     }
+});
+
+app.delete('/character', async (req, res) => {
+    let character = await deleteCharacter(req.body.id);
+    res.json(character);
 })
 
 app.listen(PORT, () => {

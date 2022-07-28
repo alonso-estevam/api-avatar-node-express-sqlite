@@ -31,3 +31,10 @@ export async function selectCharacter(id) {
         .then(res => res)
     });
 }
+
+export async function deleteCharacter(id) {
+    return openDb().then(db => {
+        return db.get('DELETE FROM Character WHERE id=?', [id])
+        .then(res => res)
+    });
+}
