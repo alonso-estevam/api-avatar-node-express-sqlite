@@ -17,3 +17,17 @@ export async function updateCharacter(character) {
         db.run('UPDATE Character SET name=?, nation=?, bender=? WHERE id=?', [character.name, character.nation, character.bender, character.id])
     });
 }
+
+export async function selectAllCharacters() {
+    return openDb().then(db => {
+        return db.all('SELECT * FROM Character')
+        .then(res => res)
+    });
+}
+
+export async function selectCharacter(id) {
+    return openDb().then(db => {
+        return db.get('SELECT * FROM Character WHERE id=?', [id])
+        .then(res => res)
+    });
+}
