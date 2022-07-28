@@ -1,5 +1,5 @@
 // import { openDb } from './configDB.js';
-import { createTable, insertCharacter, updateCharacter } from './controller/character-controller.js';
+import { createTable, insertCharacter, updateCharacter, selectAllCharacters, selectCharacter } from './controller/character-controller.js';
 
 import express from 'express';
 const app = express();
@@ -13,6 +13,16 @@ createTable();
 app.get('/', (req, res) => {
     res.send("Hello world!")
 });
+
+app.get('/characters', async (req, res) => {
+    let characters = await selectAllCharacters();
+    res.json(characters);
+})
+
+app.get('/character', async (req, res) => {
+    let character = await selectCharacter(req.body.id);
+    res.json(character);
+})
 
 app.post('/characters', (req, res) => {
     insertCharacter(req.body);
