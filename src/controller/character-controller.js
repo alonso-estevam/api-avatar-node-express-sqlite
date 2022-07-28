@@ -27,7 +27,8 @@ export async function insertCharacter(req, res) {
         db.run('INSERT INTO Character (name, nation, bender) VALUES (?,?,?)', [character.name, character.nation, character.bender])
     });
     res.json({
-        "statusCode": 201
+        "statusCode": 201,
+        "message": "Added successfully"
     })
 }
 
