@@ -1,5 +1,5 @@
 // import { openDb } from './configDB.js';
-import { createTable } from './controller/character-controller.js';
+import { createTable, insertCharacter } from './controller/character-controller.js';
 
 import express from 'express';
 const app = express();
@@ -15,9 +15,9 @@ app.get('/', (req, res) => {
 });
 
 app.post('/characters', (req, res) => {
-    console.log(req.body);
+    insertCharacter(req.body);
     res.json({
-        "statusCode": 200
+        "statusCode": 201
     })
 });
 
