@@ -18,17 +18,18 @@ export async function updateCharacter(character) {
     });
 }
 
-export async function selectAllCharacters() {
-    return openDb().then(db => {
-        return db.all('SELECT * FROM Character')
-        .then(res => res)
+export async function selectAllCharacters(req, res) {
+    openDb().then(db => {
+        db.all('SELECT * FROM Character')
+        .then(characters => res.json(characters))
     });
 }
 
-export async function selectCharacter(id) {
-    return openDb().then(db => {
-        return db.get('SELECT * FROM Character WHERE id=?', [id])
-        .then(res => res)
+export async function selectCharacter(req, res) {
+    let id = req.body.id;
+    openDb().then(db => {
+        db.get('SELECT * FROM Character WHERE id=?', [id])
+        .then(character => res.json(character))
     });
 }
 
