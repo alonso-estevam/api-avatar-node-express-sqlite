@@ -1,5 +1,5 @@
 // import { openDb } from './configDB.js';
-import { createTable, insertCharacter } from './controller/character-controller.js';
+import { createTable, insertCharacter, updateCharacter } from './controller/character-controller.js';
 
 import express from 'express';
 const app = express();
@@ -20,6 +20,20 @@ app.post('/characters', (req, res) => {
         "statusCode": 201
     })
 });
+
+app.put('/characters', (req, res) => {
+    if(req.body && !req.body.id) {
+        res.json({
+            "statusCode": "400",
+            "message": "you need to inform some id"
+        })
+    } else {
+        updateCharacter(req.body)
+        res.json({
+            "message": "Character successfully updated!"
+        })
+    }
+})
 
 app.listen(PORT, () => {
     console.log(`Server is running in http://localhost:${PORT}`);

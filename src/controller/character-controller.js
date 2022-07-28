@@ -11,3 +11,9 @@ export async function insertCharacter(character) {
         db.run('INSERT INTO Character (name, nation, bender) VALUES (?,?,?)', [character.name, character.nation, character.bender])
     });
 }
+
+export async function updateCharacter(character) {
+    openDb().then(db => {
+        db.run('UPDATE Character SET name=?, nation=?, bender=? WHERE id=?', [character.name, character.nation, character.bender, character.id])
+    });
+}
